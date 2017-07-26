@@ -226,6 +226,7 @@ this.parseDataElement = function()
 		fieldIndex = fields[i];
 		fobj = this.fields[fieldIndex];
 		fieldType = fobj[0];
+		fieldMaxLength = fobj[1];
 		
 		if(fieldType == 'b')
 		{
@@ -246,13 +247,14 @@ this.parseDataElement = function()
 			lastOffset += vl;
 			fieldValue = this.message.substr(lastOffset, tl);
 			lastOffset += tl;
+			fieldLength = tl;
 		}
 		else
 		{
 			fieldValue = this.message.substr(lastOffset, fieldLength);
 			lastOffset += fieldLength;
 		}
-		data.push({fieldIndex:fieldIndex, fieldType:fieldType, fieldLength:fieldLength, fieldName:fieldName, fieldValue:fieldValue});
+		data.push({fieldIndex:fieldIndex, fieldType:fieldType, fieldMaxLength:fieldMaxLength, fieldLength:fieldLength, fieldName:fieldName, fieldValue:fieldValue});
 	}
 	return data;
 }
