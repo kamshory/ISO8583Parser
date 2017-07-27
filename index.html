@@ -14,7 +14,7 @@ function addRow(label, value)
 function parseMessage()
 {
 	message = document.getElementById('input').value;
-	var iso = new ISO8583(message);
+	var iso = new ISO8583(message, 1);
 	var data = iso.parseDataElement();
 	
 	var propertiesHTML = '<h3>Message Poperties</h3><table border="1"><thead><tr><td>Label</td><td>Value</td><tr></thead>';
